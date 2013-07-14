@@ -1,7 +1,6 @@
 ---
-:concurrency: 5
+:concurrency: 10
 :pidfile: tmp/pids/sidekiq.pid
-staging:
-  :concurrency: 10
-production:
-  :concurrency: 50
+:limits:
+  - [default, 1]
+  - [placeholder, 9]

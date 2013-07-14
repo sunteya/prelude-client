@@ -4,6 +4,7 @@ gem 'rails', '~> 4.0.0'
 gem 'sqlite3'
 
 gem 'sidekiq', '~> 2.13.0'
+gem 'sidekiq-limit_fetch', '~> 2.1.1'
 
 # gem 'jbuilder', '~> 1.2'
 gem 'jquery-rails'
@@ -19,9 +20,8 @@ group :development, :test do
 end
 
 group :doc do
-  # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
 
-# gem 'capsum', path: '/Users/sunteya/Workspaces/sun/capsum'
-gem 'whenever'
+gem 'capsum', '>= 0.9.0', require: false
+gem 'whenever', require: false
