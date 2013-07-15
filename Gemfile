@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '~> 4.0.0'
 gem 'sqlite3'
+gem 'pg'
 
 gem 'sidekiq', '~> 2.12.4'
 gem 'sidekiq-limit_fetch', '~> 2.1.1'
