@@ -1,5 +1,6 @@
 class SquidJob
   include Sidekiq::Worker
+  sidekiq_options queue: :squid
   # sidekiq_options unique: true, unique_job_expiration: 1
   
   def perform
@@ -29,7 +30,7 @@ class SquidJob
     target << mark_line_end << "\n"
 
     if (mark_end_pos = source.index(mark_line_end))
-      target << source[mark_end_pos + mark_line_end.length + 1, mark_line_end.length]
+      target << source[mark_end_pos + mark_line_end.length + 1, source.length]
     end
 
     target.join
