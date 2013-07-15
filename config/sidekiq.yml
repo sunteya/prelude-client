@@ -2,5 +2,5 @@
 :concurrency: 10
 :pidfile: tmp/pids/sidekiq.pid
 :limits:
-  - [default, 1]
-  - [placeholder, 9]
+  # - [default, 1]
+  # - [placeholder, 9]
