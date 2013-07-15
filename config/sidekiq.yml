@@ -1,6 +1,9 @@
 ---
 :concurrency: 10
 :pidfile: tmp/pids/sidekiq.pid
-:limits:
+:queues:
+  - [squid, 1]
   - [default, 1]
-  - [placeholder, 9]
+:limits:
+  - [squid, 1]
+  # - [placeholder, 9]
