@@ -25,10 +25,12 @@ class User < ActiveRecord::Base
 
   def build_local_transfer_remaining
     self.local_transfer_remaining = self.transfer_remaining - self.freeze_transfer
+    self.local_blocked = self.local_transfer_remaining <= 0
+    true
   end
 
   def ensure_queue_squid_update_job
-    if self.local_transfer_remaining_changed? || self.deleted_at_changed? || self.binding_port_changed?
+    if self.local_blocked_changed? || self.deleted_at_changed? || self.binding_port_changed?
       SquidJob.perform_in(5.seconds)
     end
   end
