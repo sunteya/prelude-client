@@ -16,9 +16,11 @@
 #
 
 class User < ActiveRecord::Base
+  validates :upcode, uniqueness: true
   before_save :build_local_transfer_remaining
 
-  scope :available, -> { where("deleted_at NOT NULL").where("local_transfer_remaining > ?", 0) }
+  scope :without_deleted, -> { where("deleted_at NOT NULL") }
+  scope :available, -> { without_deleted.where("local_transfer_remaining > ?", 0) }
 
   def build_local_transfer_remaining
     self.local_transfer_remaining = self.transfer_remaining - self.freeze_transfer

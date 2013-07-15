@@ -5,6 +5,11 @@ gem 'sqlite3'
 
 gem 'sidekiq', '~> 2.13.0'
 gem 'sidekiq-limit_fetch', '~> 2.1.1'
+gem 'slim', '>= 1.1.0'
+gem 'sinatra', '>= 1.3.0', :require => nil
+
+gem 'httparty', '~> 0.11.0'
+gem 'fume-settable', '~> 0.0.2'
 
 # gem 'jbuilder', '~> 1.2'
 gem 'jquery-rails'
