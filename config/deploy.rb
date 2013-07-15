@@ -6,4 +6,5 @@ set :application, "prelude-client"
 
 set :shared, %w{
   config/database.yml
+  config/settings.local.yml
 }
