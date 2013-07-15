@@ -31,4 +31,4 @@ group :doc do
 end
 
 gem 'capsum', '>= 0.9.0', require: false
-gem 'whenever', require: false
+gem 'whenever', require: false, git: 'https://github.com/christophermanning/whenever.git', branch: 'rails4_bin_path'
