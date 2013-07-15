@@ -18,11 +18,18 @@
 class User < ActiveRecord::Base
   validates :upcode, uniqueness: true
   before_save :build_local_transfer_remaining
+  after_save :ensure_queue_squid_update_job
 
-  scope :without_deleted, -> { where("deleted_at NOT NULL") }
+  scope :without_deleted, -> { where("deleted_at IS NULL") }
   scope :available, -> { without_deleted.where("local_transfer_remaining > ?", 0) }
 
   def build_local_transfer_remaining
     self.local_transfer_remaining = self.transfer_remaining - self.freeze_transfer
+  end
+
+  def ensure_queue_squid_update_job
+    if self.local_transfer_remaining_changed? || self.deleted_at_changed? || self.binding_port_changed?
+      SquidJob.perform_in(5.seconds)
+    end
   end
 end
