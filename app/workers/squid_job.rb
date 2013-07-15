@@ -9,7 +9,7 @@ class SquidJob
 
     origin_squid_config = File.read(squid_config_path)
     users = User.available.order('email')
-    content = users.map { |u| "http_port #{u.binding_port}\t\t# #{u.email}" }.join("\n")
+    content = users.map { |u| "http_port #{u.binding_port}" }.join("\n")
 
     new_squid_config = self.class.replace(origin_squid_config, "# ====== PRELUDE START ======", "# ====== PRELUDE END ======", content)
 
