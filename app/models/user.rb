@@ -13,10 +13,14 @@
 #  deleted_at               :datetime
 #  created_at               :datetime
 #  updated_at               :datetime
+#  local_blocked            :boolean          default(FALSE)
 #
 
 class User < ActiveRecord::Base
+  has_many :squid_binds
+
   validates :upcode, uniqueness: true
+  
   before_save :build_local_transfer_remaining
   after_save :ensure_queue_squid_update_job
 
