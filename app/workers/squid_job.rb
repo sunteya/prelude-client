@@ -8,12 +8,12 @@ class SquidJob
     update_squid_config(available_users)
 
     squid_bind_mappings = {}
-    SquidBind.using.joins(:user).each do |squid_bind|
-      squid_bind_mappings[squid_bind.user] = squid_bind
+    SquidBind.using.each do |squid_bind|
+      squid_bind_mappings[squid_bind.user_id] = squid_bind
     end
 
     available_users.each do |user|
-      squid_bind = squid_bind_mappings.delete(user)
+      squid_bind = squid_bind_mappings.delete(user.id)
       squid_bind = register_squid_bind!(user) if squid_bind.nil?
 
       if squid_bind.port != user.binding_port

@@ -21,6 +21,11 @@ class Traffic < ActiveRecord::Base
 
   before_save :build_total_transfer_bytes
   after_save :cascade_user_freeze_transfer, if: :synchronized_changed?
+  after_save :perpare_sync_traffic_job
+
+  def perpare_sync_traffic_job
+    SyncTrafficJob.perform_async(self.id) if self.synchronized == false
+  end
 
   def build_total_transfer_bytes
     self.total_transfer_bytes = self.incoming_bytes + self.outgoing_bytes

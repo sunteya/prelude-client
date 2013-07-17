@@ -2,11 +2,10 @@ class SyncAllUsersJob
   include Sidekiq::Worker
   
   def perform
-    users_json = Client.instance.users
+    users_json = Client.instance.users!['users']
     users_json.each do |json|
       user = User.where(upcode: json['id'].to_s).first_or_initialize
       user.email = json['email']
-      user.revision = json['lock_version']
       user.binding_port = json['binding_port']
       user.transfer_remaining = json['transfer_remaining']
       user.save!
