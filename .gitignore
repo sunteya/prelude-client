@@ -13,3 +13,5 @@
 /config/database.yml
 /db/schema.rb
 /config/settings.local.yml
+/pcaps/*
+/squid.conf
