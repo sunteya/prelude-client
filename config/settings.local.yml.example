@@ -1,2 +1,3 @@
+grant_word: foo
 endpoint: https://p.wido.me
 access_token: '265828b92c233538'

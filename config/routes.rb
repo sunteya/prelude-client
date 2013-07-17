@@ -1,4 +1,6 @@
+require 'sidekiq/web'
 PreludeClient::Application.routes.draw do
-  require 'sidekiq/web'
+
+  match '/grant' => "main#grant", via: [ :get, :post ]
   mount Sidekiq::Web => '/sidekiq'
 end
