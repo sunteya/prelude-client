@@ -16,4 +16,22 @@
 
 class Traffic < ActiveRecord::Base
   belongs_to :user
+
+  validates :user, :presence => true
+
+  before_save :build_total_transfer_bytes
+  after_save :cascade_user_freeze_transfer, if: :synchronized_changed?
+
+  def build_total_transfer_bytes
+    self.total_transfer_bytes = self.incoming_bytes + self.outgoing_bytes
+  end
+
+  def cascade_user_freeze_transfer
+    self.user.freeze_transfer -= self.total_transfer_bytes_was if self.synchronized_was == false
+    self.user.freeze_transfer += self.total_transfer_bytes if self.synchronized == false
+    self.user.save!
+  rescue ActiveRecord::StaleObjectError
+    self.user.reload
+    retry
+  end
 end

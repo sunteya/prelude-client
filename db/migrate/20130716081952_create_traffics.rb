@@ -7,7 +7,7 @@ class CreateTraffics < ActiveRecord::Migration
       t.integer    :incoming_bytes, limit: 8, default: 0
       t.integer    :outgoing_bytes, limit: 8, default: 0
       t.integer    :total_transfer_bytes, limit: 8, default: 0
-      t.boolean    :synchronized, default: false
+      t.boolean    :synchronized
 
       t.timestamps
     end
