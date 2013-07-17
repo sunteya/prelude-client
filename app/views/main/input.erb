@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<head>
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0" />
+	<title>p.wido.me</title>
+	<style>
+		body {
+			font-size: 18px;
+		}
+		
+		input, button {
+			font-size: 100%;
+		}
+	</style>
+</head>
+
+<form action="grant" method="post">
+	<p>
+		<label for="token">
+			Token
+			<% if request.post? %>
+				<span style="color: red">Invalid!</span>
+			<% end %>
+		</label>
+		<br />
+		<input id="token" name="token" value="<%= params[:token] %>" />
+	</p>
+	
+	<button>submit</button>
+</form>
