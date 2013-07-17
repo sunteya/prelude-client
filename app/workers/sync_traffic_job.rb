@@ -1,5 +1,6 @@
 class SyncTrafficJob
   include Sidekiq::Worker
+  sidekiq_options queue: :sync
   
   def perform(traffic_id)
     traffic = Traffic.where(id: traffic_id, synchronized: false).joins(:user).readonly(false).first

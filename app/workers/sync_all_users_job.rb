@@ -1,5 +1,6 @@
 class SyncAllUsersJob
   include Sidekiq::Worker
+  sidekiq_options queue: :sync
   
   def perform
     users_json = Client.instance.users!['users']

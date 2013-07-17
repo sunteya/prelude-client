@@ -1,7 +1,8 @@
 ---
 :concurrency: 10
 :pidfile: tmp/pids/sidekiq.pid
-:queues: [ squid, iptables, default ]
+:queues: [ squid, iptables, sync, default ]
 :limits:
   - [squid, 1]
   - [iptables, 1]
+  - [sync, 2]
