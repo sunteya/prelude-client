@@ -21,4 +21,5 @@
 
 every 1.minute do
   runner "SyncAllUsersJob.perform_async"
+  runner "TcpdumpImporter.import_all"
 end

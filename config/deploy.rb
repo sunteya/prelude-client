@@ -5,6 +5,7 @@ set :application, "prelude-client"
 # set :repository, ".git"
 
 set :shared, %w{
+  pcaps
   config/database.yml
   config/settings.local.yml
 }
