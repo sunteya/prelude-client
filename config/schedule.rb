@@ -23,3 +23,7 @@ every 1.minute do
   runner "SyncAllUsersJob.perform_async"
   runner "TcpdumpImporter.import_all"
 end
+
+every 30.minutes do
+  runner "UpdateIptableJob.perform_async"
+end

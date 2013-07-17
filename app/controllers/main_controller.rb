@@ -4,6 +4,7 @@ class MainController < ApplicationController
   def grant
     if request.post? && params[:token] == Project.settings.grant_word
       FileUtils.touch Rails.root.join("allow/#{request.ip}")
+      UpdateIptableJob.perform_async
       return render 'success', layout: false
     end
     
