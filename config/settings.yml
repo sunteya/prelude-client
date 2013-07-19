@@ -1,2 +1,3 @@
 squid_config: /etc/squid3/squid.conf
 squid_bin: /usr/sbin/squid3
+squid_log_path: /var/log/squid3/access.log
