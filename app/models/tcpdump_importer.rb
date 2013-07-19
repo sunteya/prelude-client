@@ -49,8 +49,8 @@ class TcpdumpImporter
         next
       end
       
-      user = bind.user
-      traffic = Traffic.where(user_id: user, start_at: access_at, remote_ip: remote_ip).new
+      user = bind.user_id
+      traffic = Traffic.where(user_id: user_id, start_at: access_at, remote_ip: remote_ip).new
       traffic.synchronized = false
       traffic.incoming_bytes += data[:incoming]
       traffic.outgoing_bytes += data[:outgoing]
