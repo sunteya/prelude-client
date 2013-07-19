@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
 
   def ensure_queue_squid_update_job
     if self.local_blocked_changed? || self.deleted_at_changed? || self.binding_port_changed?
-      SquidJob.perform_in(5.seconds)
+      SquidPortsUpdateJob.perform_in(5.seconds)
     end
   end
 end
