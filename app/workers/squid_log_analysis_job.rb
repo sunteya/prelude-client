@@ -29,10 +29,12 @@ class SquidLogAnalysisJob
     begin
       while true
         do_analyse_log
-        sleep 2
       end
     rescue EOFError
-      retry if !squid_log_rotated?
+      if !squid_log_rotated?
+        sleep 20
+        retry
+      end
     end
   end
 
