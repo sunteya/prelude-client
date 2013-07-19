@@ -9,6 +9,7 @@ class SyncAllUsersJob
       user.email = json['email']
       user.binding_port = json['binding_port']
       user.transfer_remaining = json['transfer_remaining']
+      user.deleted_at = false
       user.save!
     end
 
