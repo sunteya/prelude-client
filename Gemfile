@@ -13,6 +13,7 @@ gem 'sinatra', '>= 1.3.0', :require => nil
 
 gem 'httparty', '~> 0.11.0'
 gem 'fume-settable', '~> 0.0.2'
+gem "cocaine", '~> 0.5.1'
 
 # gem 'jbuilder', '~> 1.2'
 gem 'jquery-rails'
