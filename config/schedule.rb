@@ -24,5 +24,6 @@ every 1.minute do
 end
 
 every 30.minutes do
-  runner "UpdateIptableJob.perform_async; SquidLogRotateJob.perform_async"
+  runner "UpdateIptableJob.perform_async"
+  runner "SquidLogRotateJob.perform_async"
 end

@@ -44,6 +44,7 @@ class SquidPortsUpdateJob
     if origin_squid_config != new_squid_config
       File.open(squid_config_path, 'w') { |f| f << new_squid_config }
       Cocaine::CommandLine.new(Project.settings.squid_bin, "-k reconfigure").run
+      SquidLogRotateJob.perform_async
     end
   end
 
