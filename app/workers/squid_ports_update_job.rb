@@ -1,4 +1,4 @@
-class SquidJob
+class SquidPortsUpdateJob
   include Sidekiq::Worker
   sidekiq_options queue: :squid
   # sidekiq_options unique: true, unique_job_expiration: 1
