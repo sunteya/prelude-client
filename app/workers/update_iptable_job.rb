@@ -22,8 +22,7 @@ class UpdateIptableJob
   end
 
   def prepare
-    @iptables_bin
-    @input_rules = `#{iptables_bin} -L INPUT -n`
+    @input_rules = Cocaine::CommandLine.new(iptables_bin, "-L INPUT -n").run
   end
 
   def exist?(ip)
@@ -32,15 +31,13 @@ class UpdateIptableJob
 
   def drop(ip)
     if exist?(ip)
-      command = "#{iptables_bin} -D INPUT -s #{ip} -j ACCEPT"
-      `#{command}`
+      Cocaine::CommandLine.new(iptables_bin, "-D INPUT -s #{ip} -j ACCEPT").run
     end
   end
 
   def accept(ip)
     if !exist?(ip)
-      command = "#{iptables_bin} -I INPUT -s #{ip} -j ACCEPT"
-      `#{command}`
+      Cocaine::CommandLine.new(iptables_bin, "-I INPUT -s #{ip} -j ACCEPT").run
     end
   end
 end

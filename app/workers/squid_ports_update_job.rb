@@ -38,13 +38,12 @@ class SquidPortsUpdateJob
   def update_squid_config(users)
     content = users.map { |u| "http_port #{u.binding_port}" }.join("\n")
     squid_config_path = Project.settings.squid_config
-    squid_bin = Project.settings.squid_bin
     origin_squid_config = File.read(squid_config_path)
     new_squid_config = self.class.replace(origin_squid_config, "# ====== PRELUDE START ======", "# ====== PRELUDE END ======", content)
 
     if origin_squid_config != new_squid_config
       File.open(squid_config_path, 'w') { |f| f << new_squid_config }
-      `#{squid_bin} -k reconfigure`
+      Cocaine::CommandLine.new(Project.settings.squid_bin, "-k reconfigure").run
     end
   end
 

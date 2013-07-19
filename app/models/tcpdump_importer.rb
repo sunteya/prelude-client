@@ -21,8 +21,8 @@ class TcpdumpImporter
     t = pcap_pathname.basename(".*").to_s
     @pcap_file_time = Time.parse(t)
     @pcap_traffics = {}
-    
-    rs = `/usr/sbin/tcpdump -n -q -e -r '#{pcap_pathname}'`
+
+    rs = Cocaine::CommandLine.new('/usr/sbin/tcpdump', "-n -q -e -r '#{pcap_pathname}'").run
     rs.each_line do |line|
       tcpdump = build_tcpdump(line)
       next if tcpdump.nil?
