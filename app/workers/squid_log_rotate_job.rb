@@ -11,7 +11,7 @@ class SquidLogRotateJob
       end
     end
 
-    sleep 5
+    sleep 15 # waiting SquidLogAnalysisJob exit.
     filename = File.basename(squid_log_path)
     timestamp = Time.now.strftime("%Y%m%dT%H%M%S")
     new_filename = "#{filename}-#{timestamp}"

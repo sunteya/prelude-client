@@ -32,7 +32,7 @@ class SquidLogAnalysisJob
       end
     rescue EOFError
       if !squid_log_rotated?
-        sleep 20
+        sleep 10
         retry
       end
     end
