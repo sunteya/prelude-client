@@ -16,3 +16,4 @@
 /pcaps/*
 /squid.conf
 /allow/*
+config/deploy/p2.wido.me.rb
