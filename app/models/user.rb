@@ -18,6 +18,10 @@
 #
 
 class User < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :token_authenticatable, :confirmable, :registerable, :trackable, :rememberable
+  # :lockable, :timeoutable and :omniauthable, :recoverable, :validatable
+  devise :database_authenticatable
   has_many :squid_binds
 
   validates :upcode, uniqueness: true
@@ -38,5 +42,10 @@ class User < ActiveRecord::Base
     if self.local_blocked_changed? || self.deleted_at_changed? || self.binding_port_changed?
       SquidPortsUpdateJob.perform_in(5.seconds)
     end
+  end
+
+  def self.find_for_database_authentication(warden_conditions)
+    conditions = devise_parameter_filter.filter(warden_conditions)
+    self.without_deleted.where(email: conditions[:email]).first
   end
 end
