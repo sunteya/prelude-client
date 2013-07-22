@@ -1,0 +1,9 @@
+
+
+<ul>
+	<li><%= current_user.email %></li>
+	<li><%= link_to "sign_out", destroy_user_session_path, method: :delete %></li>
+	<li><%= link_to "sidekiq", sidekiq_web_path %></li>
+</ul>
+
+
