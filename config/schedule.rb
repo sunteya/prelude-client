@@ -27,3 +27,7 @@ every 30.minutes do
   runner "UpdateIptableJob.perform_async"
   runner "SquidLogRotateJob.perform_async"
 end
+
+every 1.day, :at => '3:30 am' do
+  rake "app:cleanup"
+end

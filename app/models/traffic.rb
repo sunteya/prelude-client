@@ -9,7 +9,7 @@
 #  incoming_bytes       :integer          default(0)
 #  outgoing_bytes       :integer          default(0)
 #  total_transfer_bytes :integer          default(0)
-#  synchronized         :boolean          default(FALSE)
+#  synchronized         :boolean
 #  created_at           :datetime
 #  updated_at           :datetime
 #

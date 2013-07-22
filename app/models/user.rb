@@ -14,6 +14,7 @@
 #  created_at               :datetime
 #  updated_at               :datetime
 #  local_blocked            :boolean          default(FALSE)
+#  lock_version             :integer          default(0)
 #
 
 class User < ActiveRecord::Base
