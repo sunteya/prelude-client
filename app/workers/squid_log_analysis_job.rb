@@ -7,7 +7,10 @@ class SquidLogAnalysisJob
     @state = SquidLogAnalysisState.where(filename: new_filename).first_or_create!
 
     if @state.log_file_path.blank?
-      FileUtils.mv(squid_log_path, new_squid_log_path) if !File.exist?(new_squid_log_path)
+      if !File.exist?(new_squid_log_path)
+        FileUtils.mv(squid_log_path, new_squid_log_path) 
+        FileUtils.chmod("g+w", new_squid_log_path)
+      end
       @state.update!(log_file_path: new_squid_log_path)
     end
 
