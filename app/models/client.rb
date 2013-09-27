@@ -36,7 +36,7 @@ class Client
     attr_accessor :code
 
     def initialize(response)
-      super(response.as_json["message"] || response.as_json["error"] || response_to_s)
+      super(response.as_json["message"] || response.as_json["error"] || response.to_s)
       self.code = response.code
     end
   end
