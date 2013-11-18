@@ -9,7 +9,7 @@ class SquidLogAnalysisJob
     if @state.log_file_path.blank?
       if !File.exist?(new_squid_log_path)
         FileUtils.mv(squid_log_path, new_squid_log_path) 
-        FileUtils.chmod("g+w", new_squid_log_path)
+        FileUtils.chmod("+rw", new_squid_log_path)
       end
       @state.update!(log_file_path: new_squid_log_path)
     end
