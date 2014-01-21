@@ -23,7 +23,7 @@ every 1.minute do
   runner "SyncAllUsersJob.perform_async"
 end
 
-every 30.minutes do
+every 2.hours do
   runner "UpdateIptableJob.perform_async"
   runner "SquidLogRotateJob.perform_async"
 end
