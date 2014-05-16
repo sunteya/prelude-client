@@ -15,6 +15,6 @@ class SquidLogAnalysisState < ActiveRecord::Base
   after_destroy :remove_log_file
 
   def remove_log_file
-    FileUtils.rm(log_file_path) if File.exists?(log_file_path)
+    FileUtils.rm(log_file_path) if log_file_path && File.exists?(log_file_path)
   end
 end
