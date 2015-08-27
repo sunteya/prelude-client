@@ -9,8 +9,8 @@ gem 'pg'
 # Core
 # gem 'cancancan', '1.12.0'
 # gem 'fume-cancan', '0.0.4'
-gem 'devise', '~> 3.0.0'
-# gem 'devise-i18n', '0.12.1'
+gem 'devise', '3.5.2'
+gem 'devise-i18n', '0.12.1'
 
 # Model
 # gem 'ransack', '1.6.5'
