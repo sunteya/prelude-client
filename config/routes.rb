@@ -1,5 +1,5 @@
 require 'sidekiq/web'
-PreludeClient::Application.routes.draw do
+Rails.application.routes.draw do
 
   devise_for :users
   authenticate :user do
