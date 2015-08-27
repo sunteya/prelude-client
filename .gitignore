@@ -16,4 +16,6 @@
 /pcaps/*
 /squid.conf
 /allow/*
-config/deploy/p2.wido.me.rb
+/config/deploy/p2.wido.me.rb
+/docker-compose.yml
+/Gemfile.lock

@@ -1,6 +1,7 @@
 development:
   adapter: postgresql
   encoding: unicode
+  host: dockerhost
   database: prelude_client_development
   pool: 5
   username: postgres
@@ -9,6 +10,7 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
+  host: dockerhost
   database: prelude_client_test
   pool: 5
   username: postgres
