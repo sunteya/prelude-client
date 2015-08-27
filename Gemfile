@@ -26,12 +26,10 @@ gem 'devise-i18n', '0.12.1'
 # gem 'fume-nav', '0.0.3'
 
 # Background
-gem 'sidekiq', '~> 2.13.0'
-gem 'sidekiq-limit_fetch', '~> 2.1.1'
-gem 'sidekiq-unique-jobs', '~> 2.6.6'
-gem 'sidekiq-failures', '~> 0.2.1'
-gem 'slim', '>= 1.1.0'
-gem 'sinatra', '>= 1.3.0', :require => nil
+gem 'sidekiq', '3.4.2'
+gem 'sidekiq-limit_fetch', '2.4.2'
+gem 'sidekiq-unique-jobs', '3.0.14'
+gem 'sinatra', '>= 1.4.6', :require => nil
 
 gem 'httparty', '~> 0.11.0'
 gem "cocaine", '~> 0.5.1'
