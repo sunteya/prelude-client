@@ -31,8 +31,8 @@ gem 'sidekiq-limit_fetch', '2.4.2'
 gem 'sidekiq-unique-jobs', '3.0.14'
 gem 'sinatra', '>= 1.4.6', :require => nil
 
-gem 'httparty', '~> 0.11.0'
-gem "cocaine", '~> 0.5.1'
+gem 'httparty', '0.13.5'
+gem "cocaine", '0.5.7'
 
 # Utils
 gem 'fume-settable', '0.0.3'
